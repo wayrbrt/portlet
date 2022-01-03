@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Module>
+   <ModulePrefs title="utf8errordemo" >
+      <Require feature="opensocial-0.9"/>
+      <Require feature="views" />
+   </ModulePrefs>
+   <Content type="html" view="home">
+<![CDATA[
+<html>
+	 <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="team.js"></script>
+		
+	</head> 
+	<body>
+		REST API saba certificate: <br />		
+		<button onclick='updateRoleName();'>Call test API</button>
+<div id="Completed"></div>
+	</body>
+</html>
+]]>
+   </Content>
+</Module>
