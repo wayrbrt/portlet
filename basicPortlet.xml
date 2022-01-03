@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Module>
+   <ModulePrefs title="utf8errordemo" >
+      <Require feature="opensocial-0.9"/>
+      <Require feature="views" />
+   </ModulePrefs>
+   <Content type="html" view="home">
+<![CDATA[
+<html>
+	 <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script>		
+			function getParameterByName(name) {
+				name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+				var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+				results = regex.exec(location.search);
+				return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+			}		
+			function updateRoleName(){
+                            var prefs = gadgets.views.getParams();
+				var userId = prefs.sabaContext.userId;
+                            var apiCertificate = prefs.sabaContext.apiCertificate;
+				var certificate=prefs.sabaContext.certificate;
+				var sabaLocale=prefs.sabaContext.sabaLocale;
+				var urlHost = parent.location; 
+				urlHost=urlHost.toString();
+				var n= urlHost.indexOf(".");
+				var prefix=urlHost.substring(0,n);
+				var m=urlHost.indexOf('/Saba');
+				var postfix=urlHost.substring(n,m);
+				var url=prefix+"-api"+postfix+"/v1/people/";					
+				var params = {};		
+
+				var headers = {	"SabaCertificate":apiCertificate };
+				params[gadgets.io.RequestParameters.HEADERS] = headers;
+				params[gadgets.io.RequestParameters.CONTENT_TYPE] = "application/json;charset=UTF-8";
+				params[gadgets.io.RequestParameters.METHOD] = gadgets.io.MethodType.GET; 
+				
+              		gadgets.io.makeRequest(url+userId, function(result) {
+					alert("response: " + JSON.stringify(result));
+				}, params);				
+				return false;
+			}(document); 
+		</script>
+	</head> 
+	<body>
+		REST API saba certificate: <br />		
+		<button onclick='updateRoleName();'>Call test API</button>
+	</body>
+</html>
+]]>
+   </Content>
+</Module>
