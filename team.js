@@ -81,6 +81,8 @@ if (res.is_manager === true) {
 			ul.appendChild(item);
 			document.getElementById("main").appendChild(ul);
 			console.log("Index in array is: "+index);
+			
+			gadgets.window.adjustHeight();
 }};
 	
 	document.getElementById("button").style.visibility="hidden";
