@@ -35,10 +35,8 @@ function result(obj) {
 		console.log(res);
 
 if (res.is_manager === true) {
-	var item = document.createElement("div");
-	item.setAttribute("id","Team");
- item.innerHTML = "<p>I'm a Leader</p>";
-document.getElementById("Completed").appendChild(item);
+	var item = document.getElementById("header");
+	item.innerHTML = "I'm a Leader";
 
 	var prefs = gadgets.views.getParams(); console.log(prefs);
 				var userId = prefs.sabaContext.userId; console.log(userId);
@@ -74,16 +72,17 @@ document.getElementById("Completed").appendChild(item);
 		
 		function result(currentValue, index) {
 			var item = document.createElement("ul");
-			item.innerHTML ="<li><a href='https://drive.rockfin.com/LeaderGoal?TeamMemberCommonId="+currentValue.username+"&viewType=AllGoals' target='_blank'>"+currentValue.fname+" "+currentValue.lname+"</a></li>";
+			item.setAttribute("class","sprk-c-Accordion sprk-o-VerticalList");
+			item.innerHTML ="<li class='sprk-c-Accordion__item' data-sprk-toggle='container'><button class='sprk-c-Accordion__summary' data-id='accordion-item-1' data-analytics='analytics_string_goes_here' data-sprk-toggle='trigger' data-sprk-toggle-type='accordion'><h3 class='sprk-c-Accordion__heading sprk-b-TypeDisplaySeven'>"+currentValue.username+"</h3><svg class='sprk-c-Icon sprk-c-Icon--toggle sprk-c-Accordion__icon sprk-c-Icon--xl' data-sprk-toggle='icon' viewBox='0 0 64 64'><use xlink:href='#chevron-down-circle' data-sprk-toggle='accordionIconUseElement'></use></svg></button><div data-sprk-toggle='content'><div class='sprk-c-Accordion__content sprk-o-Stack sprk-o-Stack--medium'><p><a href='https://drive.rockfin.com/LeaderGoal?TeamMemberCommonId="+currentValue.username+"&viewType=AllGoals' target='_blank'>"+currentValue.fname+" "+currentValue.lname+"</a></li></p></div></div></li>";
+
 			document.getElementById("Team").appendChild(item);
 }};
 	
 }
 
 else {
-	var item = document.createElement("div");
- 	item.innerHTML = "<p>I'm a Team Member</p>";
-document.getElementById("Completed").appendChild(item);
+	var item = document.getElementById("header");
+ 	item.innerHTML = "I'm a Team Member";
 }
 
 /*	var arr = res.results;
