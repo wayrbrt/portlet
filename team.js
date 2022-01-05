@@ -37,6 +37,10 @@ function result(obj) {
 if (res.is_manager === true) {
 	var item = document.getElementById("header");
 	item.innerHTML = "I'm a Leader";
+	var ul=document.createElement("ul");
+			ul.setAttribute("class","sprk-c-Accordion sprk-o-VerticalList");
+			ul.setAttribute("id","team");
+			document.getElementById("main").appendChild(ul);
 	
 	var prefs = gadgets.views.getParams(); console.log(prefs);
 				var userId = prefs.sabaContext.userId; console.log(userId);
@@ -71,15 +75,11 @@ if (res.is_manager === true) {
 //creates html div card for each results
 		
 		function result(currentValue, index) {
-			var ul=document.createElement("ul");
-			ul.setAttribute("class","sprk-c-Accordion sprk-o-VerticalList");
-			ul.setAttribute("id","team");
 			var item = document.createElement("li");
 			item.setAttribute("class","sprk-c-Accordion__item");
 			item.setAttribute("data-sprk-toggle","container");
-			item.innerHTML ="<button class='sprk-c-Accordion__summary' data-id='accordion-item-"+ index++ +"' data-analytics='analytics_string_goes_here' data-sprk-toggle='trigger' data-sprk-toggle-type='accordion'><h3 class='sprk-c-Accordion__heading sprk-b-TypeDisplaySeven'>"+currentValue.fname+" "+currentValue.lname+"</h3><svg class='sprk-c-Icon sprk-c-Icon--toggle sprk-c-Accordion__icon sprk-c-Icon--xl' data-sprk-toggle='icon' viewBox='0 0 64 64'><use xlink:href='#chevron-down-circle' data-sprk-toggle='accordionIconUseElement'></use></svg></button><div data-sprk-toggle='content'><div class='sprk-c-Accordion__content sprk-o-Stack sprk-o-Stack--medium'><p><a href='https://drive.rockfin.com/LeaderGoal?TeamMemberCommonId="+currentValue.username+"&viewType=AllGoals' target='_blank'>DRIVE</a></li></p></div></div></li>";
-			ul.appendChild(item);
-			document.getElementById("main").appendChild(ul);
+			item.innerHTML ="<button class='sprk-c-Accordion__summary' data-id='accordion-item-"+index+"' data-analytics='analytics_string_goes_here' data-sprk-toggle='trigger' data-sprk-toggle-type='accordion'><h3 class='sprk-c-Accordion__heading sprk-b-TypeDisplaySeven'>"+currentValue.fname+" "+currentValue.lname+"</h3><svg class='sprk-c-Icon sprk-c-Icon--toggle sprk-c-Accordion__icon sprk-c-Icon--xl' data-sprk-toggle='icon' viewBox='0 0 64 64'><use xlink:href='#chevron-down-circle' data-sprk-toggle='accordionIconUseElement'></use></svg></button><div data-sprk-toggle='content'><div class='sprk-c-Accordion__content sprk-o-Stack sprk-o-Stack--medium'><p><a href='https://drive.rockfin.com/LeaderGoal?TeamMemberCommonId="+currentValue.username+"&viewType=AllGoals' target='_blank'>DRIVE</a></li></p></div></div></li>";
+			document.getElementById("team").appendChild(item);
 			console.log("Index in array is: "+index);
 			
 			gadgets.window.adjustHeight();
