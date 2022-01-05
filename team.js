@@ -74,7 +74,7 @@ if (res.is_manager === true) {
 	
 //creates html div card for each results
 		
-		function result(currentValue, index++) {
+		function result(currentValue, index) {
 			var item = document.createElement("li");
 			item.setAttribute("class","sprk-c-Accordion__item");
 			item.setAttribute("data-sprk-toggle","container");
